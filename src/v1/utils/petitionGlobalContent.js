@@ -15,7 +15,18 @@ https://mybusnow.njtransit.com/bustime/wireless/html/eta.jsp?route=---&direction
             console.log('realizaremos peticion')
             puppeteer.use(StealthPlugin())
             // puppeteer usage as normal
-            return await puppeteer.launch({ headless: true }).then(async browser => {
+            return await puppeteer.launch({
+                args: [
+                    "--disable-setuid-sandbox",
+                    "--no-sandbox",
+                    "--single-process",
+                    "--no-zygote"
+                ],
+                headless: true,
+                executablePath:
+                    process.env.NODE_ENV === 'production'
+                        ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath()
+            }).then(async browser => {
                 var webpageHTML
                 const page = await browser.newPage()
                 await page.goto(url)

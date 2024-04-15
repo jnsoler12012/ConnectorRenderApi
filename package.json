@@ -8,6 +8,7 @@
   },
   "type": "module",
   "scripts": {
+    "start": "node ./src/index.js",
     "startNodemon": "nodemon ./src/index.js",
     "startRender": "node ./build/bundle.cjs",
     "build": "webpack --env NODE_ENV=production --config webpack.config.cjs",

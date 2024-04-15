@@ -9,8 +9,7 @@
   "type": "module",
   "scripts": {
     "startNodemon": "nodemon ./src/index.js",
-    "startRender": "npx puppeteer browsers install chrome & node ./build/bundle.cjs",
-    "start": "npm run startNodemon & webpack-dev-server --inline --hot",
+    "startRender": "node ./build/bundle.cjs",
     "build": "webpack --env NODE_ENV=production --config webpack.config.cjs",
     "startServer": "npm run build && node ./build/bundle.cjs",
     "test": "echo \"Error: no test specified\" && exit 1"
